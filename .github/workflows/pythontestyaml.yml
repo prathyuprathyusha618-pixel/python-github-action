@@ -1,0 +1,28 @@
+name: Run and Test Python Program
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Run Python program
+        run: python hello.py
+
+      - name: Run tests
+        run: pytest
