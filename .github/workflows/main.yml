@@ -1,4 +1,4 @@
-name: Run Python Program
+name: Run and Test Python Program
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  run-python:
+  test-python:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +18,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install pytest
+        run: pip install pytest
+
       - name: Run Python program
         run: python hello.py
+
+      - name: Run tests
+        run: pytest
